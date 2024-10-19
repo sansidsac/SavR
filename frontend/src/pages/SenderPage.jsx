@@ -1,8 +1,103 @@
 import { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 
-function taskService(data) {
-    console.log(data);
-}
+const waveAnimation = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background: linear-gradient(270deg, #004d00, #003300);
+  background-size: 400% 400%;
+  animation: ${waveAnimation} 15s ease infinite;
+  color: #fff;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 2;
+  }
+
+  label {
+    margin-right: 10px;
+  }
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  color: #000; /* Set text color to black */
+  flex: 1;
+
+  &:focus {
+    background-color: #004d00;
+    color: #fff;
+  }
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #006600;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #004d00;
+  }
+`;
+
+const FoodItemList = styled.ul`
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+`;
+
+const FoodItem = styled.li`
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
 
 const SenderPage = () => {
   const [foodItems, setFoodItems] = useState([]);
@@ -14,7 +109,6 @@ const SenderPage = () => {
     maxTimeBeforeBestUse: '',
   });
 
-  // Handle form changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -22,7 +116,6 @@ const SenderPage = () => {
     });
   };
 
-  // Add food item to list
   const addFoodItem = () => {
     setFoodItems([
       ...foodItems,
@@ -37,16 +130,19 @@ const SenderPage = () => {
     });
   };
 
-  // Remove food item from the list
   const removeFoodItem = (index) => {
     setFoodItems(foodItems.filter((_, i) => i !== index));
   };
 
-  // Submit task to backend
+  const taskService = async (foodItems) => {
+    // Implement task submission logic here
+    console.log('Task Submitted :', foodItems);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      taskService(foodItems); // Replace with actual API call
+      taskService(foodItems);
       alert('Task submitted successfully!');
       setFoodItems([]);
     } catch (error) {
@@ -56,14 +152,12 @@ const SenderPage = () => {
   };
 
   return (
-    <div className="sender-page">
+    <PageContainer>
       <h2>Sender: Add / Remove Food Items</h2>
-      
-      {/* Form for adding food items */}
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <div>
           <label>Quantity / Serves</label>
-          <input
+          <Input
             type="number"
             name="quantity"
             value={formData.quantity}
@@ -71,10 +165,9 @@ const SenderPage = () => {
             required
           />
         </div>
-
         <div>
           <label>Location</label>
-          <input
+          <Input
             type="text"
             name="location"
             value={formData.location}
@@ -82,10 +175,9 @@ const SenderPage = () => {
             required
           />
         </div>
-
         <div>
           <label>Price</label>
-          <input
+          <Input
             type="number"
             name="price"
             value={formData.price}
@@ -93,10 +185,9 @@ const SenderPage = () => {
             required
           />
         </div>
-
         <div>
           <label>Time of Preparation</label>
-          <input
+          <Input
             type="datetime-local"
             name="timeOfPreparation"
             value={formData.timeOfPreparation}
@@ -104,10 +195,9 @@ const SenderPage = () => {
             required
           />
         </div>
-
         <div>
           <label>Max Time Before Best Use</label>
-          <input
+          <Input
             type="datetime-local"
             name="maxTimeBeforeBestUse"
             value={formData.maxTimeBeforeBestUse}
@@ -115,27 +205,24 @@ const SenderPage = () => {
             required
           />
         </div>
-
-        <button type="button" onClick={addFoodItem}>Add Food Item</button>
-      </form>
-
-      {/* Display added food items */}
+        <Button type="button" onClick={addFoodItem}>Add Food Item</Button>
+      </Form>
       <h3>Food Items List</h3>
-      <ul>
+      <FoodItemList>
         {foodItems.map((item, index) => (
-          <li key={index}>
-            Quantity: {item.quantity}, Location: {item.location}, Price: {item.price}, 
-            Time of Preparation: {item.timeOfPreparation}, Max Time Before Best Use: {item.maxTimeBeforeBestUse}
-            <button type="button" onClick={() => removeFoodItem(index)}>Remove</button>
-          </li>
+          <FoodItem key={index}>
+            <span>
+              Quantity: {item.quantity}, Location: {item.location}, Price: {item.price}, 
+              Time of Preparation: {item.timeOfPreparation}, Max Time Before Best Use: {item.maxTimeBeforeBestUse}
+            </span>
+            <Button type="button" onClick={() => removeFoodItem(index)}>Remove</Button>
+          </FoodItem>
         ))}
-      </ul>
-
-      {/* Submit button */}
+      </FoodItemList>
       {foodItems.length > 0 && (
-        <button onClick={handleSubmit}>Submit Task</button>
+        <Button onClick={handleSubmit}>Submit Task</Button>
       )}
-    </div>
+    </PageContainer>
   );
 };
 
