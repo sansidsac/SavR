@@ -1,5 +1,4 @@
 import { FaBell, FaCog } from 'react-icons/fa';
-import React from 'react'
 
 const NavBar = () => {
 return (
