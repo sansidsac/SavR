@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Reduction Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #00172B;
+            color: #FFF;
+            font-family: 'sans serif';
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .filter-section, .stats-section, .charts-section {
+            margin-bottom: 20px;
+        }
+        .filter-section select, .filter-section button {
+            margin-right: 10px;
+        }
+        .stats-section div {
+            display: inline-block;
+            width: 30%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CO2 Reduction Dashboard</h1>
+        <div class="filter-section">
+            <label for="days">Select Days:</label>
+            <select id="days" multiple></select>
+            <label for="foods">Select Foods:</label>
+            <select id="foods" multiple></select>
+            <label for="regions">Select Regions:</label>
+            <select id="regions" multiple></select>
+            <button onclick="filterData()">Filter</button>
+        </div>
+        <div class="stats-section">
+            <div>
+                <h2>Total Weekly Carbonfootprint Reduction</h2>
+                <p id="total-co2-reduced">(kg CO₂e/kg)</p>
+            </div>
+            <div>
+                <h2>Average Daily Carbonfootprint Reduction</h2>
+                <p id="avg-co2-reduced">(kg CO₂e/kg)</p>
+            </div>
+        </div>
+        <div class="charts-section">
+            <div id="day-carbon-chart"></div>
+            <div id="region-carbon-chart"></div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
