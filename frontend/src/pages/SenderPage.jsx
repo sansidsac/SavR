@@ -1,103 +1,4 @@
 import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-
-const waveAnimation = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-`;
-
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  min-height: 100vh;
-  background: linear-gradient(270deg, #004d00, #003300);
-  background-size: 400% 400%;
-  animation: ${waveAnimation} 15s ease infinite;
-  color: #fff;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  max-width: 500px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease-in-out;
-  margin-bottom: 20px;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex: 2;
-  }
-
-  label {
-    margin-right: 10px;
-  }
-`;
-
-const Input = styled.input`
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  color: #000; /* Set text color to black */
-  flex: 1;
-
-  &:focus {
-    background-color: #004d00;
-    color: #fff;
-  }
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #006600;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #004d00;
-  }
-`;
-
-const FoodItemList = styled.ul`
-  list-style: none;
-  padding: 0;
-  width: 100%;
-  max-width: 500px;
-  margin-top: 20px;
-`;
-
-const FoodItem = styled.li`
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
 
 const SenderPage = () => {
   const [foodItems, setFoodItems] = useState([]);
@@ -107,6 +8,7 @@ const SenderPage = () => {
     price: '',
     timeOfPreparation: '',
     maxTimeBeforeBestUse: '',
+    item: '',
   });
 
   const handleChange = (e) => {
@@ -119,7 +21,7 @@ const SenderPage = () => {
   const addFoodItem = () => {
     setFoodItems([
       ...foodItems,
-      { ...formData }
+      { ...formData, items: [] }
     ]);
     setFormData({
       quantity: '',
@@ -127,6 +29,7 @@ const SenderPage = () => {
       price: '',
       timeOfPreparation: '',
       maxTimeBeforeBestUse: '',
+      item: '',
     });
   };
 
@@ -152,77 +55,100 @@ const SenderPage = () => {
   };
 
   return (
-    <PageContainer>
-      <h2>Sender: Add / Remove Food Items</h2>
-      <Form onSubmit={handleSubmit}>
-        <div>
-          <label>Quantity / Serves</label>
-          <Input
+    <div className="flex flex-col items-center p-6 min-h-screen bg-gradient-to-r from-gray-800 to-gray-600 text-white">
+      <h2 className="text-3xl font-bold mb-6">Sender: Add / Remove Food Items</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-xl bg-gray-900 bg-opacity-80 p-6 rounded-lg shadow-lg mb-6">
+        <div className="flex flex-col gap-2">
+          <label className="text-lg">Item Name</label>
+          <input
+            type="text"
+            name="item"
+            value={formData.item}
+            onChange={handleChange}
+            required
+            className="p-3 rounded bg-gray-700 text-white focus:bg-gray-600"
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="text-lg">Quantity / Serves</label>
+          <input
             type="number"
             name="quantity"
             value={formData.quantity}
             onChange={handleChange}
             required
+            className="p-3 rounded bg-gray-700 text-white focus:bg-gray-600"
           />
         </div>
-        <div>
-          <label>Location</label>
-          <Input
+        <div className="flex flex-col gap-2">
+          <label className="text-lg">Location</label>
+          <input
             type="text"
             name="location"
             value={formData.location}
             onChange={handleChange}
             required
+            className="p-3 rounded bg-gray-700 text-white focus:bg-gray-600"
           />
         </div>
-        <div>
-          <label>Price</label>
-          <Input
+        <div className="flex flex-col gap-2">
+          <label className="text-lg">Price</label>
+          <input
             type="number"
             name="price"
             value={formData.price}
             onChange={handleChange}
             required
+            className="p-3 rounded bg-gray-700 text-white focus:bg-gray-600"
           />
         </div>
-        <div>
-          <label>Time of Preparation</label>
-          <Input
+        <div className="flex flex-col gap-2">
+          <label className="text-lg">Time of Preparation</label>
+          <input
             type="datetime-local"
             name="timeOfPreparation"
             value={formData.timeOfPreparation}
             onChange={handleChange}
             required
+            className="p-3 rounded bg-gray-700 text-white focus:bg-gray-600"
           />
         </div>
-        <div>
-          <label>Max Time Before Best Use</label>
-          <Input
+        <div className="flex flex-col gap-2">
+          <label className="text-lg">Max Time Before Best Use</label>
+          <input
             type="datetime-local"
             name="maxTimeBeforeBestUse"
             value={formData.maxTimeBeforeBestUse}
             onChange={handleChange}
             required
+            className="p-3 rounded bg-gray-700 text-white focus:bg-gray-600"
           />
         </div>
-        <Button type="button" onClick={addFoodItem}>Add Food Item</Button>
-      </Form>
-      <h3>Food Items List</h3>
-      <FoodItemList>
+        <button type="button" onClick={addFoodItem} className="p-3 rounded bg-blue-700 text-white hover:bg-blue-800">Add Food Item</button>
+      </form>
+      <h3 className="text-2xl font-semibold mb-4">Food Items List</h3>
+      <ul className="list-none p-0 w-full max-w-xl mt-6">
         {foodItems.map((item, index) => (
-          <FoodItem key={index}>
-            <span>
-              Quantity: {item.quantity}, Location: {item.location}, Price: {item.price}, 
-              Time of Preparation: {item.timeOfPreparation}, Max Time Before Best Use: {item.maxTimeBeforeBestUse}
-            </span>
-            <Button type="button" onClick={() => removeFoodItem(index)}>Remove</Button>
-          </FoodItem>
+          <li key={index} className="bg-gray-900 bg-opacity-80 p-4 rounded-lg mb-4 flex flex-col">
+            <div className="flex justify-between items-center mb-2">
+              <span>
+                <strong>Item:</strong> {item.item}, <strong>Quantity:</strong> {item.quantity}, <strong>Location:</strong> {item.location}, <strong>Price:</strong> {item.price}, 
+                <strong>Time of Preparation:</strong> {item.timeOfPreparation}, <strong>Max Time Before Best Use:</strong> {item.maxTimeBeforeBestUse}
+              </span>
+              <button type="button" onClick={() => removeFoodItem(index)} className="p-2 rounded bg-red-600 text-white hover:bg-red-700">Remove</button>
+            </div>
+            <ul className="list-disc pl-5 mt-2">
+              {item.items.map((subItem, subIndex) => (
+                <li key={subIndex} className="text-white">{subItem}</li>
+              ))}
+            </ul>
+          </li>
         ))}
-      </FoodItemList>
+      </ul>
       {foodItems.length > 0 && (
-        <Button onClick={handleSubmit}>Submit Task</Button>
+        <button onClick={handleSubmit} className="p-3 rounded bg-blue-700 text-white hover:bg-blue-800 mt-6">Submit Task</button>
       )}
-    </PageContainer>
+    </div>
   );
 };
 
