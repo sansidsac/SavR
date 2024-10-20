@@ -1,6 +1,5 @@
 import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa';
-
 const Card = ({ itemName, quantity, price, location, preparedTime, expiryTime }) => {
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 m-2 bg-white">
