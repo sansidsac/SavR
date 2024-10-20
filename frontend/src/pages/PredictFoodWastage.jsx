@@ -140,7 +140,7 @@ const PredictFoodWastage = () => {
                     </form>
                     {prediction !== null && (
                         <div className="mt-6">
-                            <h2 className="text-xl font-bold text-center">Predicted Wastage Food Amount: {prediction}</h2>
+                            <h2 className="text-xl font-bold text-center">Predicted Wastage Food Amount: {prediction}%</h2>
                         </div>
                     )}
                 </div>
