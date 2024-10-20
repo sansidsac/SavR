@@ -1,0 +1,56 @@
+Day,Food,Waste Amount (kg),Carbon Footprint ,Total Carbon Reductions,Stage of Waste,Region,Waste Source,Packaging Waste (kg)
+Monday,Biryani,10,5.5,55,Consumption,Kallamessery,Wedding,0.5
+Monday,Chicken Curry,6,6.8,40.8,Retail,Companypady,Corporate,0.3
+Monday,Porotta,7,3.5,24.5,Household,Muttam,Housewarming,0.2
+Monday,Fish Curry,5,4.6,23,Retail,Pathadipalam,Engagement,0.1
+Monday,Puttu,3,2.2,6.6,Consumption,Kallamessery,Birthday,0.1
+Monday,Appam,4,2.1,8.4,Household,Edappally,Wedding,0.1
+Monday,Beef Curry,6,21,126,Retail,Muttam,Engagement,0.4
+Monday,Banana Fry,4,1.5,6,Consumption,Pathadipalam,Corporate,0.1
+Tuesday,Fried Rice,8,4,32,Consumption,Kallamessery,Housewarming,0.2
+Tuesday,Egg Roast,5,3.5,17.5,Retail,Companypady,Birthday,0.2
+Tuesday,Vegetable Stew,6,1.9,11.4,Household,Pullinchode,Wedding,0.1
+Tuesday,Mutton Curry,7,19,133,Retail,Pathadipalam,Corporate,0.5
+Tuesday,Porotta,8,3.5,28,Consumption,Kallamessery,Engagement,0.3
+Tuesday,Sambar,4,1.8,7.2,Household,Companypady,Birthday,0.1
+Tuesday,Kappa (Tapioca),6,1.7,10.2,Retail,Muttam,Housewarming,0.2
+Tuesday,Appam,5,2.1,10.5,Household,Pathadipalam,Corporate,0.2
+Wednesday,Biryani,12,5.5,66,Consumption,Kallamessery,Wedding,0.5
+Wednesday,Chicken Curry,6,6.8,40.8,Retail,Companypady,Engagement,0.3
+Wednesday,Porotta,6,3.5,21,Household,Muttam,Corporate,0.2
+Wednesday,Puttu,3,2.2,6.6,Consumption,Pathadipalam,Housewarming,0.1
+Wednesday,Fish Curry,7,4.6,32.2,Retail,Edappally,Birthday,0.2
+Wednesday,Mutton Curry,6,19,114,Retail,Companypady,Wedding,0.5
+Wednesday,Dosa,5,2.3,11.5,Household,Edappally,Engagement,0.1
+Wednesday,Banana Fry,3,1.5,4.5,Consumption,Pathadipalam,Corporate,0.1
+Thursday,Fried Rice,10,4,40,Consumption,Kallamessery,Housewarming,0.3
+Thursday,Beef Curry,8,21,168,Retail,Companypady,Birthday,0.4
+Thursday,Dosa,5,2.3,11.5,Household,Muttam,Wedding,0.1
+Thursday,Vegetable Stew,6,1.9,11.4,Household,Pullinchode,Engagement,0.1
+Thursday,Chicken Curry,7,6.8,47.6,Retail,Kallamessery,Corporate,0.3
+Thursday,Kappa (Tapioca),5,1.7,8.5,Household,Companypady,Housewarming,0.2
+Thursday,Puttu,4,2.2,8.8,Consumption,Edappally,Birthday,0.1
+Thursday,Banana Fry,4,1.5,6,Consumption,Pathadipalam,Wedding,0.1
+Friday,Biryani,14,5.5,77,Consumption,Kallamessery,Engagement,0.6
+Friday,Chicken Curry,6,6.8,40.8,Retail,Companypady,Corporate,0.3
+Friday,Fish Curry,6,4.6,27.6,Retail,Muttam,Housewarming,0.2
+Friday,Porotta,8,3.5,28,Household,Pathadipalam,Birthday,0.2
+Friday,Puttu,3,2.2,6.6,Consumption,Kallamessery,Wedding,0.1
+Friday,Vegetable Stew,6,1.9,11.4,Household,Companypady,Engagement,0.1
+Friday,Mutton Curry,7,19,133,Retail,Muttam,Corporate,0.5
+Friday,Appam,5,2.1,10.5,Household,Pathadipalam,Housewarming,0.1
+Saturday,Fried Rice,9,4,36,Consumption,Kallamessery,Birthday,0.3
+Saturday,Beef Curry,7,21,147,Retail,Companypady,Wedding,0.4
+Saturday,Chicken Curry,5,6.8,34,Retail,Muttam,Engagement,0.3
+Saturday,Dosa,6,2.3,13.8,Household,Pathadipalam,Corporate,0.1
+Saturday,Mutton Curry,8,19,152,Retail,Kallamessery,Housewarming,0.5
+Saturday,Appam,5,2.1,10.5,Consumption,Companypady,Birthday,0.1
+Saturday,Fish Curry,5,4.6,23,Retail,Muttam,Wedding,0.1
+Sunday,Biryani,11,5.5,60.5,Consumption,Kallamessery,Housewarming,0.5
+Sunday,Chicken Curry,5,6.8,34,Retail,Companypady,Birthday,0.2
+Sunday,Porotta,7,3.5,24.5,Household,Muttam,Wedding,0.1
+Sunday,Fish Curry,8,4.6,36.8,Retail,Pathadipalam,Engagement,0.2
+Sunday,Puttu,2,2.2,4.4,Consumption,Kallamessery,Corporate,0.1
+Sunday,Appam,4,2.1,8.4,Household,Companypady,Housewarming,0.2
+Sunday,Mutton Curry,6,19,114,Retail,Muttam,Birthday,0.3
+Sunday,Banana Fry,5,1.5,7.5,Consumption,Pathadipalam,Wedding,0.1
