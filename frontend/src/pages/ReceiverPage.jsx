@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/NavBar';
+import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card';
-
-import React from 'react'
+import React from 'react';
 
 const ReceiverPage = () => {
   const [taskData, setTaskData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const reloadTasks = async () => {
@@ -13,7 +14,7 @@ const ReceiverPage = () => {
         // Force a re-import of the module
         const module = await import(`./tasks.json`);
         setTaskData(module.default.items);
-        console.log('Tasks reloaded:', module.default,items);
+        console.log('Tasks reloaded:', module.default.items);
       } catch (error) {
         console.error('Error reloading tasks:', error);
       }
@@ -29,7 +30,23 @@ const ReceiverPage = () => {
   return (
     <><Navbar />
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Available Items:</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">Available Items:</h1>
+        <div>
+          <button
+            onClick={() => navigate('/predict')}
+            className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+          >
+            Predict Food Wastage
+          </button>
+          <button
+            onClick={() => navigate('/sender')}
+            className="bg-green-500 text-white px-4 py-2 rounded"
+          >
+            Contribute
+          </button>
+        </div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {taskData.slice(0, 12).map((item, index) => (
           <Card
