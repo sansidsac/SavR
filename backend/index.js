@@ -1,11 +1,40 @@
 const express = require('express');
-const cors= require('cors');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const { exec } = require('child_process');
+const fs = require('fs');
+const csv = require('csv-parser');
 const app = express();
 const port = 3000;
-app.use(cors());
-app.use(express.json());
 
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// Load the dataset
+let data = [];
+
+fs.createReadStream('alldata.csv')
+  .pipe(csv())
+  .on('data', (row) => {
+    data.push(row);
+  })
+  .on('end', () => {
+    console.log('CSV file successfully processed');
+  });
+
+// Endpoint to get filtered data
+app.post('/filter', (req, res) => {
+  const { day, food, region } = req.body;
+  const filteredData = data.filter(item => 
+    day.includes(item.Day) && 
+    food.includes(item.Food) && 
+    region.includes(item.Region)
+  );
+  res.json(filteredData);
+});
+
+// Endpoint to predict food wastage amount
 app.post('/predict', (req, res) => {
   const {
     type_of_food,
