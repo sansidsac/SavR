@@ -1,4 +1,5 @@
 import { FaBell, FaCog } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -9,10 +10,10 @@ const NavBar = () => {
                     <span className="text-base italic text-gray-300">Save and Savour</span>
                 </div>
                 <div className="flex space-x-10">
-                    <a href="#" className="hover:text-gray-300">Home</a>
-                    <a href="#" className="hover:text-gray-300">Features</a>
-                    <a href="#" className="hover:text-gray-300">Pricing</a>
-                    <a href="#" className="hover:text-gray-300">Contact</a>
+                    <Link to="/" className="hover:text-gray-300">Home</Link>
+                    <Link to="/sender" className="hover:text-gray-300">Sender</Link>
+                    <Link to="/receiver" className="hover:text-gray-300">Receiver</Link>
+                    <Link to="/" className="hover:text-gray-300">Contact</Link>
                 </div>
                 <div className="flex items-center space-x-4">
                     <button className="relative">

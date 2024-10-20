@@ -13,7 +13,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home />}/> 
           <Route path="/sender" element={<SenderPage />}/> 
-          <Route path="/receiver" element={<ReceiverPage />}/> 
+          <Route path="/receiver" element={<ReceiverPage />}/>
       </Routes>
     </BrowserRouter>
       
